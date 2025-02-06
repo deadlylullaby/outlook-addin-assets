@@ -3,10 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Commandes Outlook</title>
+    <title>Signalement en cours...</title>
+    <script>
+        function reportPhishing() {
+            Office.onReady(function() {
+                const item = Office.context.mailbox.item;
+                
+                // Exemple : Envoyer un email signalé à une adresse spécifique
+                if (item) {
+                    item.forwardAsync({
+                        toRecipients: ["d.michalon@cyberg.Fr"],
+                        subject: "Phishing Reported: " + item.subject,
+                        body: "Cet email a été signalé comme phishing par un utilisateur."
+                    }, function(asyncResult) {
+                        if (asyncResult.status === Office.AsyncResultStatus.Succeeded) {
+                            document.getElementById("status").innerText = "Email signalé avec succès !";
+                        } else {
+                            document.getElementById("status").innerText = "Erreur lors du signalement.";
+                        }
+                    });
+                }
+            });
+        }
+    </script>
 </head>
-<body>
-    <h1>Bienvenue dans l'add-in Outlook</h1>
-    <script src="commands.js"></script>
+<body onload="reportPhishing()">
+    <h2 id="status">Signalement en cours...</h2>
 </body>
 </html>
