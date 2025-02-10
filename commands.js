@@ -16,7 +16,7 @@ function reportPhishing(event) {
             };
 
             Office.context.mailbox.item.displayNewMessageForm({
-                to: "d.michalon@cyberg.fr",  // destination mail 
+                to: "s.barranco@cyberg.fr",  // destination mail 
                 subject: phishingReport.subject,
                 body: phishingReport.body
             });
