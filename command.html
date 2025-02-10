@@ -9,10 +9,9 @@
             Office.onReady(function() {
                 const item = Office.context.mailbox.item;
                 
-                // Exemple : Envoyer un email signalé à une adresse spécifique
                 if (item) {
                     item.forwardAsync({
-                        toRecipients: ["d.michalon@cyberg.fr"],
+                        toRecipients: ["s.barranco@cyberg.fr"],
                         subject: "Phishing Reported: " + item.subject,
                         body: "Cet email a été signalé comme phishing par un utilisateur."
                     }, function(asyncResult) {
